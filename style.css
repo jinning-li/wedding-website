@@ -1,0 +1,250 @@
+/* Global Design & Technical Guidelines */
+:root {
+    --bg-solid: #FAF7F2;
+    --text-primary: #3A332C;
+    --accent-primary: #D48C6A;
+    --accent-secondary: #C79F68;
+    --footer-bg: #3A332C;
+    --footer-text: #FAF7F2;
+
+    --font-serif-en: 'Playfair Display', 'Cormorant Garamond', serif;
+    --font-sans-en: 'Lato', 'Montserrat', sans-serif;
+    --font-serif-zh: 'Noto Serif SC', 'Songti', serif;
+    --font-sans-zh: 'PingFang SC', 'Noto Sans SC', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans-en), var(--font-sans-zh);
+    color: var(--text-primary);
+    background-color: var(--bg-solid);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Layout & Parallax */
+.container {
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    perspective: 2px; /* Parallax effect */
+}
+
+.parallax-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transform-style: preserve-3d;
+}
+
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    transform: translateZ(-1px) scale(1.5); /* Parallax effect */
+    z-index: -1;
+}
+
+/* Add gradient fades to parallax backgrounds */
+#hero .parallax-bg::after,
+#visual-divider .parallax-bg::before,
+#visual-divider .parallax-bg::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(to bottom, transparent, var(--bg-solid));
+}
+
+#hero .parallax-bg::after {
+    bottom: 0;
+    background: linear-gradient(to top, var(--bg-solid), transparent);
+}
+
+#visual-divider .parallax-bg::before {
+    top: 0;
+    background: linear-gradient(to bottom, var(--bg-solid), transparent);
+}
+
+#visual-divider .parallax-bg::after {
+    bottom: 0;
+    background: linear-gradient(to top, var(--bg-solid), transparent);
+}
+
+
+.content {
+    width: 100%;
+    max-width: 430px; /* iPhone Max width */
+    padding: 0 2rem;
+    text-align: center;
+    margin: 0 auto; /* Center the content block */
+}
+
+/* Section-specific styles */
+
+/* Section 1: Hero */
+#hero {
+    align-items: flex-start;
+}
+
+.hero-text {
+    padding-top: 15vh;
+    font-family: var(--font-sans-en), var(--font-sans-zh);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+}
+
+.hero-text hr {
+    width: 50px;
+    margin: 1rem auto 0;
+    border: 0;
+    border-top: 1px solid var(--text-primary);
+}
+
+/* Section 2: Announcement */
+.solid-block {
+    background-color: var(--bg-solid);
+    padding: 4rem 0;
+    position: relative; /* For stacking context */
+    z-index: 1;
+}
+
+.names {
+    font-family: var(--font-serif-en), var(--font-serif-zh);
+    font-size: 2.2rem;
+    font-weight: 400;
+}
+
+.ampersand {
+    font-family: var(--font-serif-en);
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+.details {
+    margin-top: 2rem;
+}
+
+.date-time {
+    font-family: var(--font-sans-en), var(--font-sans-zh);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.venue {
+    font-family: var(--font-serif-en);
+    font-style: italic;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.details-separator {
+    width: 100px;
+    margin: 2rem auto;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
+.welcome-message {
+    font-family: var(--font-sans-en), var(--font-sans-zh);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.welcome-message p:last-child {
+    margin-top: 1rem;
+}
+
+/* Section 3: Visual Divider */
+#visual-divider.short {
+    height: 75vh;
+}
+
+.floating-text {
+    color: var(--footer-text);
+    padding: 1rem 2rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+}
+
+.floating-text p {
+    font-family: var(--font-sans-en), var(--font-sans-zh);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Section 4: RSVP Intro */
+.short-solid {
+    padding: 3rem 0;
+}
+
+.rsvp-heading {
+    font-family: var(--font-serif-en), var(--font-serif-zh);
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+/* Section 5: Call to Action */
+#cta .parallax-bg {
+    background-color: rgba(58, 51, 44, 0.3); /* Warm overlay */
+    background-blend-mode: multiply;
+}
+
+.rsvp-button {
+    background-color: var(--accent-primary);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-family: var(--font-sans-en), var(--font-sans-zh);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.rsvp-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Section 6: Footer */
+#footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    padding: 3rem 0;
+    text-align: center;
+    z-index: 1;
+    position: relative;
+}
+
+#footer p {
+    font-family: var(--font-sans-en), var(--font-sans-zh);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Scroll Animations */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
