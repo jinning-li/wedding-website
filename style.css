@@ -58,14 +58,15 @@ body {
 
 /* Add gradient fades to parallax backgrounds */
 #hero .parallax-bg::after,
-#visual-divider .parallax-bg::before,
-#visual-divider .parallax-bg::after {
+#schedule .parallax-bg::before,
+#schedule .parallax-bg::after,
+#cta .parallax-bg::before,
+#cta .parallax-bg::after {
     content: '';
     position: absolute;
     left: 0;
     right: 0;
     height: 150px;
-    background: linear-gradient(to bottom, transparent, var(--bg-solid));
 }
 
 #hero .parallax-bg::after {
@@ -73,12 +74,14 @@ body {
     background: linear-gradient(to top, var(--bg-solid), transparent);
 }
 
-#visual-divider .parallax-bg::before {
+#schedule .parallax-bg::before,
+#cta .parallax-bg::before {
     top: 0;
     background: linear-gradient(to bottom, var(--bg-solid), transparent);
 }
 
-#visual-divider .parallax-bg::after {
+#schedule .parallax-bg::after,
+#cta .parallax-bg::after {
     bottom: 0;
     background: linear-gradient(to top, var(--bg-solid), transparent);
 }
@@ -168,27 +171,48 @@ body {
     margin-top: 1rem;
 }
 
-/* Section 3: Visual Divider */
-#visual-divider.short {
-    height: 75vh;
+/* Section 3: The Schedule */
+#schedule {
+    min-height: 80vh;
+    height: auto;
 }
 
-.floating-text {
+.timeline-card {
+    background: rgba(30, 25, 20, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
     color: var(--footer-text);
-    padding: 1rem 2rem;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
 }
 
-.floating-text p {
-    font-family: var(--font-sans-en), var(--font-sans-zh);
-    font-size: 0.8rem;
-    line-height: 1.6;
+
+
+.timeline-item {
+    padding: 0.8rem 0;
 }
+
+.timeline-item p {
+    font-family: var(--font-sans-en), var(--font-sans-zh);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.timeline-item strong {
+    color: var(--accent-primary);
+    font-weight: 700;
+}
+
+/* Staggered animation for timeline items */
+.timeline-item.fade-in-up:nth-child(2) { transition-delay: 0.1s; }
+.timeline-item.fade-in-up:nth-child(3) { transition-delay: 0.2s; }
+.timeline-item.fade-in-up:nth-child(4) { transition-delay: 0.3s; }
+.timeline-item.fade-in-up:nth-child(5) { transition-delay: 0.4s; }
 
 /* Section 4: RSVP Intro */
 .short-solid {
-    padding: 3rem 0;
+    padding: 11rem 0;
 }
 
 .rsvp-heading {
@@ -198,6 +222,10 @@ body {
 }
 
 /* Section 5: Call to Action */
+#cta {
+    height: 70vh;
+}
+
 #cta .parallax-bg {
     background-color: rgba(58, 51, 44, 0.3); /* Warm overlay */
     background-blend-mode: multiply;
