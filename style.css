@@ -102,7 +102,7 @@ body {
 .hero-text {
     padding-top: 15vh;
     font-family: var(--font-sans-en), var(--font-sans-zh);
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     letter-spacing: 2px;
     color: var(--text-primary);
 }
@@ -124,13 +124,13 @@ body {
 
 .names {
     font-family: var(--font-serif-en), var(--font-serif-zh);
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     font-weight: 400;
 }
 
 .ampersand {
     font-family: var(--font-serif-en);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin: 0.5rem 0;
 }
 
@@ -140,14 +140,14 @@ body {
 
 .date-time {
     font-family: var(--font-sans-en), var(--font-sans-zh);
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     line-height: 1.6;
 }
 
 .venue {
     font-family: var(--font-serif-en);
     font-style: italic;
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-top: 1rem;
 }
 
@@ -161,7 +161,7 @@ body {
 .welcome-message {
     font-family: var(--font-sans-en), var(--font-sans-zh);
     line-height: 1.6;
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 .welcome-message p:last-child {
@@ -182,7 +182,7 @@ body {
 
 .floating-text p {
     font-family: var(--font-sans-en), var(--font-sans-zh);
-    font-size: 1rem;
+    font-size: 0.8rem;
     line-height: 1.6;
 }
 
@@ -194,7 +194,7 @@ body {
 .rsvp-heading {
     font-family: var(--font-serif-en), var(--font-serif-zh);
     font-weight: 400;
-    font-size: 2rem;
+    font-size: 1.6rem;
 }
 
 /* Section 5: Call to Action */
@@ -233,7 +233,7 @@ body {
 
 #footer p {
     font-family: var(--font-sans-en), var(--font-sans-zh);
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     line-height: 1.6;
 }
 
