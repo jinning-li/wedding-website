@@ -85,7 +85,7 @@
                     <div class="form-group">
                         <label>Attendance / 是否出席</label>
                         <div class="radio-group">
-                            <input type="radio" id="attend" name="attendance" value="attending" checked>
+                            <input type="radio" id="attend" name="attendance" value="attending">
                             <label for="attend">Happily Attend / 欣然出席</label>
                         </div>
                         <div class="radio-group">
@@ -93,11 +93,15 @@
                             <label for="decline">Regretfully Decline / 遗憾缺席</label>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="entreePreference">Entree Preference / 主菜选择</label>
-                        <select id="entreePreference" name="entreePreference">
-                            <option value="Option 1">Option 1 (To be announced)</option>
-                            <option value="Option 2">Option 2 (To be announced)</option>
+                    <div id="additional-guests-section" class="form-group" style="display: none;">
+                        <label for="additionalGuests">Are you bringing any additional guests? / 是否携带家属或亲友？</label>
+                        <select id="additionalGuests" name="additionalGuests">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                         </select>
                     </div>
                     <button type="submit" class="rsvp-button">Submit / 提交</button>

@@ -30,6 +30,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const successMessage = document.getElementById('success-message');
 
     if (rsvpForm) {
+        const additionalGuestsSection = document.getElementById('additional-guests-section');
+        const attendanceRadios = rsvpForm.querySelectorAll('input[name="attendance"]');
+
+        // Function to check attendance and toggle guest section
+        const toggleGuestSection = () => {
+            const attending = document.getElementById('attend').checked;
+            const additionalGuestsSelect = document.getElementById('additionalGuests');
+
+            if (attending) {
+                additionalGuestsSection.style.display = 'block';
+                additionalGuestsSelect.disabled = false;
+            } else {
+                additionalGuestsSection.style.display = 'none';
+                additionalGuestsSelect.disabled = true;
+            }
+        };
+
+        // Add event listeners to radio buttons
+        attendanceRadios.forEach(radio => {
+            radio.addEventListener('change', toggleGuestSection);
+        });
+
+        // Initial check in case "attending" is checked by default
+        toggleGuestSection();
+
+        // Prevent form submission on "Enter" key press in text fields
+        rsvpForm.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' && event.target.nodeName === 'INPUT') {
+                event.preventDefault();
+            }
+        });
+
         rsvpForm.addEventListener('submit', (event) => {
             event.preventDefault();
 
@@ -42,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             submitButton.textContent = 'Submitting...';
 
             // Replace with your Google Apps Script URL
-            const googleAppsScriptUrl = 'https://script.google.com/macros/s/AKfycbw3ItHksNs0ne7Fi13T6lCE4lTGRBfq-XYpHqMsqMQtFRtynWsHuO5Tx1aw7o7AqLZIZQ/exec';
+            const googleAppsScriptUrl = 'https://script.google.com/macros/s/AKfycbzvacGqLHtMzgplHqcE2XdqqbqO7_JKgdB5dgv4fIpCZySAVdkMwDMlJRGWA8z5ZNTFwA/exec';
 
             fetch(googleAppsScriptUrl, {
                 method: 'POST',
