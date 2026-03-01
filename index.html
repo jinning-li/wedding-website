@@ -77,7 +77,35 @@
         <section id="cta" class="parallax-container">
             <div class="parallax-bg" style="background-image: url('winery-background-2.png');"></div>
             <div class="content fade-in-up">
-                <a href="#" class="rsvp-button">RSVP | 敬请赐复</a>
+                <form id="rsvp-form" class="fade-in-up">
+                    <div class="form-group">
+                        <label for="guestName">Guest Name / 宾客姓名</label>
+                        <input type="text" id="guestName" name="guestName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Attendance / 是否出席</label>
+                        <div class="radio-group">
+                            <input type="radio" id="attend" name="attendance" value="attending" checked>
+                            <label for="attend">Happily Attend / 欣然出席</label>
+                        </div>
+                        <div class="radio-group">
+                            <input type="radio" id="decline" name="attendance" value="declining">
+                            <label for="decline">Regretfully Decline / 遗憾缺席</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="entreePreference">Entree Preference / 主菜选择</label>
+                        <select id="entreePreference" name="entreePreference">
+                            <option value="Option 1">Option 1 (To be announced)</option>
+                            <option value="Option 2">Option 2 (To be announced)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="rsvp-button">Submit / 提交</button>
+                </form>
+                <div id="success-message" style="display: none;">
+                    <p>Thank you! Your response has been saved.</p>
+                    <p>感谢您！您的回复已保存。</p>
+                </div>
             </div>
         </section>
 
