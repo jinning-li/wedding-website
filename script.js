@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             submitButton.textContent = 'Submitting...';
 
             // Replace with your Google Apps Script URL
-            const googleAppsScriptUrl = 'https://script.google.com/macros/s/AKfycbycbUsa1jjmUChea9qm0OTAI95XmzrPCqCpGgdVGdJNuzsR62xL8Hxmof_w4rYaSfhnuQ/exec';
+            const googleAppsScriptUrl = 'https://script.google.com/macros/s/AKfycbw3ItHksNs0ne7Fi13T6lCE4lTGRBfq-XYpHqMsqMQtFRtynWsHuO5Tx1aw7o7AqLZIZQ/exec';
 
             fetch(googleAppsScriptUrl, {
                 method: 'POST',
