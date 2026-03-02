@@ -241,7 +241,8 @@ body {
 
 /* Section 5: Call to Action */
 #cta {
-    height: 70vh;
+    height: 90vh;
+    padding: 5rem 0;
 }
 
 #cta .parallax-bg {
