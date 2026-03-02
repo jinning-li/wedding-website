@@ -251,9 +251,12 @@ body {
 }
 
 .rsvp-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background-color: var(--accent-primary);
     color: white;
-    padding: 1rem 2.5rem;
+    padding: 0 2.5rem; /* Use padding for width, not height */
     border-radius: 6px;
     text-decoration: none;
     font-family: var(--font-sans-en), var(--font-sans-zh);
@@ -262,6 +265,8 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     border: none;
+    height: 48px; /* Explicit height */
+    font-size: 16px;
 }
 
 .rsvp-button:hover {
@@ -418,10 +423,7 @@ body {
     margin-top: 0.5rem;
 }
 
-.rsvp-button {
-    height: 48px; /* Taller touch target */
-    font-size: 16px; /* Consistent font size */
-}
+
 
 
 /* Section 6: Footer */
