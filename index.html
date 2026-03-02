@@ -80,12 +80,13 @@
                 <form id="rsvp-form" class="fade-in-up">
                     <div class="form-group">
                         <label for="guestName">Guest Name / 宾客姓名</label>
+                        <p class="helper-text">We’ll use this name for your dinner table name card. / 此姓名将用于制作您的晚宴席位卡。</p>
                         <input type="text" id="guestName" name="guestName" required>
                     </div>
                     <div class="form-group">
                         <label>Attendance / 是否出席</label>
                         <div class="radio-group">
-                            <input type="radio" id="attend" name="attendance" value="attending">
+                            <input type="radio" id="attend" name="attendance" value="attending" required>
                             <label for="attend">Happily Attend / 欣然出席</label>
                         </div>
                         <div class="radio-group">
@@ -94,12 +95,13 @@
                         </div>
                     </div>
                     <div id="additional-guests-section" class="form-group" style="display: none;">
-                        <label for="additionalGuests">Are you bringing any additional guests? / 是否携带家属或亲友？</label>
-                        <select id="additionalGuests" name="additionalGuests">
+                        <label for="additionalGuestsCount">Number of additional guests / 随行人数</label>
+                        <select id="additionalGuestsCount" name="additionalGuestsCount">
                             <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                         </select>
+                        <div id="guest-names-container"></div>
                     </div>
                     <button type="submit" class="rsvp-button">Submit / 提交</button>
                 </form>

@@ -32,18 +32,49 @@ document.addEventListener('DOMContentLoaded', () => {
     if (rsvpForm) {
         const additionalGuestsSection = document.getElementById('additional-guests-section');
         const attendanceRadios = rsvpForm.querySelectorAll('input[name="attendance"]');
+        const additionalGuestsCountSelect = document.getElementById('additionalGuestsCount');
+        const guestNamesContainer = document.getElementById('guest-names-container');
+
+        // Function to generate additional guest name inputs
+        const generateGuestInputs = (count) => {
+            guestNamesContainer.innerHTML = ''; // Clear previous inputs
+            for (let i = 1; i <= count; i++) {
+                const inputGroup = document.createElement('div');
+                inputGroup.classList.add('form-group');
+
+                const label = document.createElement('label');
+                label.setAttribute('for', `additionalGuestName${i}`);
+                label.textContent = `Additional Guest ${i} Name / 第${i}位随行宾客姓名`;
+
+                const helperText = document.createElement('p');
+                helperText.classList.add('helper-text');
+                helperText.textContent = 'For dinner table name cards / 用于制作席位卡';
+
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.id = `additionalGuestName${i}`;
+                input.name = `additionalGuestName${i}`;
+                input.required = true;
+
+                inputGroup.appendChild(label);
+                inputGroup.appendChild(helperText);
+                inputGroup.appendChild(input);
+                guestNamesContainer.appendChild(inputGroup);
+            }
+        };
 
         // Function to check attendance and toggle guest section
         const toggleGuestSection = () => {
             const attending = document.getElementById('attend').checked;
-            const additionalGuestsSelect = document.getElementById('additionalGuests');
-
             if (attending) {
                 additionalGuestsSection.style.display = 'block';
-                additionalGuestsSelect.disabled = false;
+                additionalGuestsCountSelect.disabled = false;
+                // Trigger change to show/hide inputs based on current selection
+                generateGuestInputs(parseInt(additionalGuestsCountSelect.value, 10));
             } else {
                 additionalGuestsSection.style.display = 'none';
-                additionalGuestsSelect.disabled = true;
+                additionalGuestsCountSelect.disabled = true;
+                generateGuestInputs(0); // Clear inputs when declining
             }
         };
 
@@ -52,7 +83,13 @@ document.addEventListener('DOMContentLoaded', () => {
             radio.addEventListener('change', toggleGuestSection);
         });
 
-        // Initial check in case "attending" is checked by default
+        // Add event listener to the guest count dropdown
+        additionalGuestsCountSelect.addEventListener('change', (event) => {
+            const count = parseInt(event.target.value, 10);
+            generateGuestInputs(count);
+        });
+
+        // Initial check
         toggleGuestSection();
 
         // Prevent form submission on "Enter" key press in text fields
@@ -68,17 +105,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(rsvpForm);
             const data = Object.fromEntries(formData.entries());
 
-            // Show loading state if needed, e.g., disable button
+            // Show loading state
             const submitButton = rsvpForm.querySelector('button[type="submit"]');
             submitButton.disabled = true;
             submitButton.textContent = 'Submitting...';
 
-            // Replace with your Google Apps Script URL
-            const googleAppsScriptUrl = 'https://script.google.com/macros/s/AKfycbzvacGqLHtMzgplHqcE2XdqqbqO7_JKgdB5dgv4fIpCZySAVdkMwDMlJRGWA8z5ZNTFwA/exec';
+            const googleAppsScriptUrl = 'https://script.google.com/macros/s/AKfycbzJ2wdTubaObB2lGL0r6C_7y7Ombdt5IjM9HH3SbfHkgrcKbCwvJJnfTbMX0-5aefH46w/exec';
 
             fetch(googleAppsScriptUrl, {
                 method: 'POST',
-                mode: 'no-cors', // Important for Google Apps Script web apps
+                mode: 'no-cors',
                 cache: 'no-cache',
                 headers: {
                     'Content-Type': 'application/json',
@@ -86,14 +122,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(data),
             })
             .then(() => {
-                // Since 'no-cors' hides the actual response, we assume success
                 rsvpForm.style.display = 'none';
                 successMessage.style.display = 'block';
             })
             .catch((error) => {
                 console.error('Error:', error);
                 alert('There was an error submitting your RSVP. Please try again.');
-                // Re-enable the button
                 submitButton.disabled = false;
                 submitButton.textContent = 'Submit / 提交';
             });
