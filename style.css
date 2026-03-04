@@ -154,6 +154,15 @@ body {
     margin-top: 1rem;
 }
 
+.venue a {
+    color: var(--accent-primary);
+    text-decoration: none;
+}
+
+.venue a:hover {
+    text-decoration: underline;
+}
+
 .details-separator {
     width: 100px;
     margin: 2rem auto;
