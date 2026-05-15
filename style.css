@@ -187,11 +187,17 @@ body {
 }
 
 /* Section 4: Wedding Itinerary */
+.timeline-wrapper {
+    display: inline-block;
+    text-align: left;
+    margin: 1.5rem 0 1rem;
+}
+
 #wedding-itinerary .timeline-item {
-    padding: 2rem 0;
+    padding: 0.5rem 0;
     color: var(--text-primary);
     font-family: var(--font-sans-en), var(--font-sans-zh);
-    line-height: 1.6;
+    line-height: 1.;
     font-size: 0.8rem;
 }
 
@@ -209,7 +215,7 @@ body {
     width: 40px;
     border: 0;
     border-top: 1px solid var(--accent-secondary);
-    margin: 0 auto 1.5rem;
+    margin: 1.5rem auto 2rem;
 }
 
 .dress-code-container h3 {
@@ -236,10 +242,12 @@ body {
 #wedding-itinerary .timeline-item.fade-in-up:nth-child(3) { transition-delay: 0.2s; }
 #wedding-itinerary .timeline-item.fade-in-up:nth-child(4) { transition-delay: 0.3s; }
 #wedding-itinerary .timeline-item.fade-in-up:nth-child(5) { transition-delay: 0.4s; }
-#wedding-itinerary .dress-code-container.fade-in-up { transition-delay: 0.5s; }
+#wedding-itinerary .timeline-item.fade-in-up:nth-child(6) { transition-delay: 0.5s; }
+#wedding-itinerary .timeline-item.fade-in-up:nth-child(7) { transition-delay: 0.6s; }
+#wedding-itinerary .dress-code-container.fade-in-up { transition-delay: 0.7s; }
 
 .short-solid {
-    padding: 4rem 0;
+    padding: 4rem 0 2rem;
 }
 
 .rsvp-heading {
