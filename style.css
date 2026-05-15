@@ -190,7 +190,7 @@ body {
 .timeline-wrapper {
     display: inline-block;
     text-align: left;
-    margin: 1.5rem 0 1rem;
+    margin: 1.5rem 0 -0.5rem;
 }
 
 #wedding-itinerary .timeline-item {
@@ -215,7 +215,7 @@ body {
     width: 40px;
     border: 0;
     border-top: 1px solid var(--accent-secondary);
-    margin: 1.5rem auto 2rem;
+    margin: 2rem auto;
 }
 
 .dress-code-container h3 {
@@ -245,6 +245,7 @@ body {
 #wedding-itinerary .timeline-item.fade-in-up:nth-child(6) { transition-delay: 0.5s; }
 #wedding-itinerary .timeline-item.fade-in-up:nth-child(7) { transition-delay: 0.6s; }
 #wedding-itinerary .dress-code-container.fade-in-up { transition-delay: 0.7s; }
+#wedding-itinerary .dress-code-container.fade-in-up ~ .dress-code-container.fade-in-up { transition-delay: 0.8s; }
 
 .short-solid {
     padding: 4rem 0 2rem;
