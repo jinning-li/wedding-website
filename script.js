@@ -30,12 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const successMessage = document.getElementById('success-message');
 
     if (rsvpForm) {
-        const additionalGuestsSection = document.getElementById('additional-guests-section');
-        const attendanceRadios = rsvpForm.querySelectorAll('input[name="attendance"]');
         const additionalGuestsCountSelect = document.getElementById('additionalGuestsCount');
         const guestNamesContainer = document.getElementById('guest-names-container');
 
-        // Function to generate additional guest name inputs
+        // Function to generate additional guest name and meal inputs
         const generateGuestInputs = (count) => {
             guestNamesContainer.innerHTML = ''; // Clear previous inputs
             for (let i = 1; i <= count; i++) {
@@ -59,38 +57,52 @@ document.addEventListener('DOMContentLoaded', () => {
                 inputGroup.appendChild(label);
                 inputGroup.appendChild(helperText);
                 inputGroup.appendChild(input);
+
+                const mealGroup = document.createElement('div');
+                mealGroup.classList.add('form-group');
+                mealGroup.style.marginTop = '1rem';
+                
+                const mealLabel = document.createElement('label');
+                mealLabel.setAttribute('for', `additionalGuestMeal${i}`);
+                mealLabel.textContent = `Additional Guest ${i} Entrée / 第${i}位随行宾客主菜`;
+                
+                const mealSelect = document.createElement('select');
+                mealSelect.id = `additionalGuestMeal${i}`;
+                mealSelect.name = `additionalGuestMeal${i}`;
+                mealSelect.required = true;
+                
+                const optionDefault = document.createElement('option');
+                optionDefault.value = '';
+                optionDefault.disabled = true;
+                optionDefault.selected = true;
+                optionDefault.textContent = 'Select an option / 请选择';
+                
+                const optionSalmon = document.createElement('option');
+                optionSalmon.value = 'Salmon';
+                optionSalmon.textContent = 'Salmon (Beluga Lentils, Broccolini, Bearnaise) / 香煎三文鱼';
+                
+                const optionShortRib = document.createElement('option');
+                optionShortRib.value = 'Short Rib';
+                optionShortRib.textContent = 'Short Rib (Potato Puree, Broccolini, Red Wine Demi) / 慢炖牛小排';
+                
+                mealSelect.appendChild(optionDefault);
+                mealSelect.appendChild(optionSalmon);
+                mealSelect.appendChild(optionShortRib);
+                
+                mealGroup.appendChild(mealLabel);
+                mealGroup.appendChild(mealSelect);
+                
+                inputGroup.appendChild(mealGroup);
+
                 guestNamesContainer.appendChild(inputGroup);
             }
         };
-
-        // Function to check attendance and toggle guest section
-        const toggleGuestSection = () => {
-            const attending = document.getElementById('attend').checked;
-            if (attending) {
-                additionalGuestsSection.style.display = 'block';
-                additionalGuestsCountSelect.disabled = false;
-                // Trigger change to show/hide inputs based on current selection
-                generateGuestInputs(parseInt(additionalGuestsCountSelect.value, 10));
-            } else {
-                additionalGuestsSection.style.display = 'none';
-                additionalGuestsCountSelect.disabled = true;
-                generateGuestInputs(0); // Clear inputs when declining
-            }
-        };
-
-        // Add event listeners to radio buttons
-        attendanceRadios.forEach(radio => {
-            radio.addEventListener('change', toggleGuestSection);
-        });
 
         // Add event listener to the guest count dropdown
         additionalGuestsCountSelect.addEventListener('change', (event) => {
             const count = parseInt(event.target.value, 10);
             generateGuestInputs(count);
         });
-
-        // Initial check
-        toggleGuestSection();
 
         // Prevent form submission on "Enter" key press in text fields
         rsvpForm.addEventListener('keydown', (event) => {
@@ -110,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
             submitButton.disabled = true;
             submitButton.textContent = 'Submitting...';
 
-            const googleAppsScriptUrl = 'https://script.google.com/macros/s/AKfycbzJ2wdTubaObB2lGL0r6C_7y7Ombdt5IjM9HH3SbfHkgrcKbCwvJJnfTbMX0-5aefH46w/exec';
+            const googleAppsScriptUrl = 'https://script.google.com/macros/s/AKfycbybrwdwDriS_2h1RQMoJOvbjz9079vP0zP9xxqvupG8QRjy5_1cMCHwsiaKcTSuYIWo9Q/exec';
 
             fetch(googleAppsScriptUrl, {
                 method: 'POST',

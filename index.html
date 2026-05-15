@@ -92,23 +92,22 @@
             <div class="parallax-bg" style="background-image: url('winery-background-2.png');"></div>
             <div class="content fade-in-up">
                 <form id="rsvp-form" class="fade-in-up">
+                    <input type="hidden" id="formType" name="formType" value="meal_selection">
                     <div class="form-group">
                         <label for="guestName">Guest Name / 宾客姓名</label>
                         <p class="helper-text">We’ll use this name for your dinner table name card. / 此姓名将用于制作您的晚宴席位卡。</p>
                         <input type="text" id="guestName" name="guestName" required>
                     </div>
-                    <div class="form-group">
-                        <label>Attendance / 是否出席</label>
-                        <div class="radio-group">
-                            <input type="radio" id="attend" name="attendance" value="attending" required>
-                            <label for="attend">Happily Attend / 欣然出席</label>
-                        </div>
-                        <div class="radio-group">
-                            <input type="radio" id="decline" name="attendance" value="declining">
-                            <label for="decline">Regretfully Decline / 遗憾缺席</label>
-                        </div>
+                    <div id="main-entree-section" class="form-group">
+                        <label for="mainEntree">Main Entrée / 主菜选择</label>
+                        <select id="mainEntree" name="mainEntree" required>
+                            <option value="" disabled selected>Select an option / 请选择</option>
+                            <option value="Salmon">Salmon (Beluga Lentils, Broccolini, Bearnaise) / 香煎三文鱼</option>
+                            <option value="Short Rib">Short Rib (Potato Puree, Broccolini, Red Wine Demi) / 慢炖牛小排</option>
+                        </select>
+                        <p class="helper-text" style="margin-top: 0.5rem;">Please let us know if you have any dietary restrictions or special accommodations. / 若您有任何饮食禁忌或特殊需求，请直接与我们联系。</p>
                     </div>
-                    <div id="additional-guests-section" class="form-group" style="display: none;">
+                    <div id="additional-guests-section" class="form-group">
                         <label for="additionalGuestsCount">Number of additional guests / 随行人数</label>
                         <select id="additionalGuestsCount" name="additionalGuestsCount">
                             <option value="0">0</option>
